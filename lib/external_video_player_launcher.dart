@@ -54,4 +54,47 @@ class ExternalVideoPlayerLauncher {
       intent.launch();
     }
   }
+
+  /// *launch Video Player All Format*
+
+  static launchXplayer(String url, String? mime, Map<String, dynamic>? args) {
+    if (Platform.isAndroid) {
+      final intent = AndroidIntent(
+        package: 'video.player.videoplayer',
+        type: mime ?? MIME.applicationXMpegURL,
+        action: 'action_view',
+        data: Uri.parse(url).toString(),
+
+        //TODO test this
+        arguments: args,
+        flags: <int>[
+          Flag.FLAG_ACTIVITY_NEW_TASK,
+          Flag.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
+        ],
+      );
+
+      intent.launch();
+    }
+  }
+
+  /// *show all available player*
+  /// *If fail to player on someplayer try to change mime*
+  static launchOtherPlayer(
+      String url, String? mine, Map<String, dynamic>? args) {
+    if (Platform.isAndroid) {
+      final intent = AndroidIntent(
+        type: mine ?? MIME.applicationXMpegURL,
+        action: 'action_view',
+        data: Uri.parse(url).toString(),
+
+        //TODO test this
+        arguments: args,
+        flags: <int>[
+          Flag.FLAG_ACTIVITY_NEW_TASK,
+          Flag.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
+        ],
+      );
+      intent.launch();
+    }
+  }
 }

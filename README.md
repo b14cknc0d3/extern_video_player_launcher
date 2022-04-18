@@ -11,29 +11,48 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A plugin that can lauch video url with Mx Player and VLC player
 
 ## Features
+<!-- markdownlint-disable MD033 -->
+1. [Example Vimeo](https://vimeo.com/700168951)
+<!-- markdownlint-enable MD033 -->
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
+if you want to launch video url with mxplayer or vlcplayer ,use it
+for more information plz check on github repo
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+
 
 ```dart
-const like = 'sample';
+//launch mx
+ ExternalVideoPlayerLauncher.launchMxPlayer(
+                  videoMap["sources"][0], MIME.applicationMp4, {
+                "title": videoMap["title"],
+              });
+
+//launch vlc
+ ExternalVideoPlayerLauncher.launchVlcPlayer(
+                  videoMap["sources"][0], MIME.applicationXMpegURL, {
+                "title": videoMap["title"],
+              });
+
+// launch with xplayer
+  ExternalVideoPlayerLauncher.launchXplayer(
+                  videoMap["sources"][0], MIME.applicationXMpegURL, {
+                "title": videoMap["title"],
+              });
+
+// open with avaliable player
+  ExternalVideoPlayerLauncher.launchOtherPlayer(
+                  videoMap["sources"][0], MIME.applicationXMpegURL, {
+                "title": videoMap["title"],
+              });
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+If you wan't to add other player feel free to add and submit pull request or you can add intent guide of player to issue 

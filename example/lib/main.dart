@@ -298,6 +298,25 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.blueAccent,
             ),
           ),
+          const SizedBox(
+            width: 8,
+          ),
+          FloatingActionButton(
+            backgroundColor: Colors.redAccent,
+            onPressed: () {
+              final _random = Random();
+              var videoMap = mediaJSON[_random.nextInt(mediaJSON.length)];
+              ExternalVideoPlayerLauncher.launchOtherPlayer(
+                  videoMap["sources"][0], MIME.applicationXMpegURL, {
+                "title": videoMap["title"],
+              });
+            },
+            tooltip: 'Launch VLC',
+            child: const Icon(
+              Icons.play_arrow,
+              color: Colors.yellow,
+            ),
+          ),
         ],
       ),
     );
