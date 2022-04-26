@@ -45,12 +45,17 @@ for more information plz check on github repo
                   videoMap["sources"][0], MIME.applicationXMpegURL, {
                 "title": videoMap["title"],
               });
+// launc onlinemediaplayer
+   ExternalVideoPlayerLauncher.launchOnlineMediaPlayer(
+                  videoMap["title"], videoMap["sources"][0], true, "");
 
 // open with avaliable player
   ExternalVideoPlayerLauncher.launchOtherPlayer(
                   videoMap["sources"][0], MIME.applicationXMpegURL, {
                 "title": videoMap["title"],
               });
+
+
 ```
 
 ## Additional information

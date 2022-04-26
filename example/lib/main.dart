@@ -306,15 +306,32 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               final _random = Random();
               var videoMap = mediaJSON[_random.nextInt(mediaJSON.length)];
-              ExternalVideoPlayerLauncher.launchOtherPlayer(
+              ExternalVideoPlayerLauncher.launchXplayer(
                   videoMap["sources"][0], MIME.applicationXMpegURL, {
                 "title": videoMap["title"],
               });
             },
-            tooltip: 'Launch VLC',
+            tooltip: 'Launch Xplayer',
             child: const Icon(
               Icons.play_arrow,
               color: Colors.yellow,
+            ),
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          FloatingActionButton(
+            backgroundColor: Colors.greenAccent,
+            onPressed: () {
+              final _random = Random();
+              var videoMap = mediaJSON[_random.nextInt(mediaJSON.length)];
+              ExternalVideoPlayerLauncher.launchOnlineMediaPlayer(
+                  videoMap["title"], videoMap["sources"][0], true, "");
+            },
+            tooltip: 'Launch Xplayer',
+            child: const Icon(
+              Icons.play_arrow,
+              color: Colors.pink,
             ),
           ),
         ],

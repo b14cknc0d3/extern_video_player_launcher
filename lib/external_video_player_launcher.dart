@@ -97,4 +97,34 @@ class ExternalVideoPlayerLauncher {
       intent.launch();
     }
   }
+
+  /// title of the movie
+  /// url of the movie
+  /// [isLive] is live stream [true : false]
+  /// license of the app
+  static launchOnlineMediaPlayer(
+      String title, String url, bool isLive, String? license) {
+    if (Platform.isAndroid) {
+      try {
+        final intent = AndroidIntent(
+          package: 'com.mediaplay.player',
+          type: MIME.applicationXMpegURL,
+          action: 'action_view',
+          data: Uri.parse(url).toString(),
+          arguments: {
+            'title': title,
+            'isLive': isLive ? 1 : 0,
+            'license': license,
+          },
+          flags: <int>[
+            Flag.FLAG_ACTIVITY_NEW_TASK,
+            Flag.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
+          ],
+        );
+        intent.launch();
+      } catch (e) {
+        throw Exception(e);
+      }
+    }
+  }
 }

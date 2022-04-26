@@ -1,6 +1,6 @@
 name: external_video_player_launcher
-description: An external video player laucher that can lauch url/dir with MxPlayer and VLC player and Other Player
-version: 0.0.2
+description: An external video player laucher that can lauch url/dir with MxPlayer , VLC player and Other Player
+version: 0.0.3
 homepage: "https://github.com/b14cknc0d3/extern_video_player_launcher.git"
 
 platform:
