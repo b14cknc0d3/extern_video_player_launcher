@@ -28,6 +28,26 @@ class ExternalVideoPlayerLauncher {
     }
   }
 
+  static launchWithNetworkStreamPlayer(
+      String url, String? mime, Map<String, dynamic>? args) {
+    if (Platform.isAndroid) {
+      final intent = AndroidIntent(
+        package: 'com.genuine.leone',
+        type: mime ?? MIME.applicationXMpegURL,
+        action: 'action_view',
+        data: Uri.parse(url).toString(),
+
+        //TODO test this
+        arguments: args,
+        flags: <int>[
+          Flag.FLAG_ACTIVITY_NEW_TASK,
+          Flag.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
+        ],
+      );
+      intent.launch();
+    }
+  }
+
   /// *launchVlcPlayer*
   /// *ExtraArgs*
   ///"subtitles_location" 	String 	Path of a subtitles file

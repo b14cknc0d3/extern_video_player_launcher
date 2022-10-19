@@ -271,12 +271,13 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               final _random = Random();
               var videoMap = mediaJSON[_random.nextInt(mediaJSON.length)];
-              ExternalVideoPlayerLauncher.launchMxPlayer(
-                  videoMap["sources"][0], MIME.applicationMp4, {
+              ExternalVideoPlayerLauncher.launchWithNetworkStreamPlayer(
+                  "http://webui.vhls.ru.com/ddy1/premium61/tracks-v1a1/mono.m3u8?|user-agent=MySport&referer=https://streamservicehd.click/",
+                  MIME.applicationMp4, {
                 "title": videoMap["title"],
               });
             },
-            tooltip: 'Launch MXPLAYER',
+            tooltip: 'Launch Network Stream',
             child: const Icon(Icons.play_arrow),
           ),
           const SizedBox(
